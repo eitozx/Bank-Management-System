@@ -1,0 +1,11 @@
+# [Environment]
+.venv
+.env
+
+# [Useless Files]
+__pycache__/
+*pyc
+/.vscode
+
+# [Test File]
+test.py
