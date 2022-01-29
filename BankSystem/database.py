@@ -3,6 +3,10 @@ import dotenv
 from mysql import connector
 from mysql.connector import errors
 
+class InvalidCredential(Exception):
+    pass
+
+
 class Manage:
 
     def __init__(self):
@@ -15,7 +19,7 @@ class Manage:
                 host = os.getenv("HOST", "localhost")
             )
         except errors.ProgrammingError:
-            print("Please fill '.env' file with correct credentials")
+            raise InvalidCredential("Please fill '.env' file with correct credentials")
 
         self.dictcursor = self.connector.cursor(dictionary = True)
         self.cursor = self.connector.cursor()
